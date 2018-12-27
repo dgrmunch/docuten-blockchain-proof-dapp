@@ -85,6 +85,5 @@ contract CredentialsConstrained {
     function closeToAuthorizedUsers() public onlyContractOwner onlyWhenOpenToEveryUser {
         isOpenToEveryUser = false;
     }
-      
-    
+
 }
