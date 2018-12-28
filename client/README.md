@@ -1,6 +1,14 @@
-# To use it
+# About this dApp
 
-Access  https://dgrmunch.github.io/docuten-blockchain-proof-dapp"
+* Ethereum dApp built on Solidity + React.
+* Project developed by Diego Gonzalez (@ Enxendra/Docuten) for ConsenSys Bootcamp 2019.
+* To be used for distributed proof-of-existence and proof-of-life experiments (using document hashes + ipfs hashes).
+
+# Use a currently deployed instance
+
+* Access https://dgrmunch.github.io/docuten-blockchain-proof-dapp"
+* Connect Metamask to Ropsten
+* More info about the addresses + ABIs for deployed smart contracts in the file deployed_addresses.txt
 
 # To run it in your own server
 
