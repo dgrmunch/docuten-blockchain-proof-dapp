@@ -55,6 +55,7 @@ class App extends Component {
   certifyDocument(e) {
     
     const { accounts, contract, docHash, ipfsHash } = this.state;
+    
     contract.methods.certifyDocumentCreationWithIPFSHash(docHash, ipfsHash, this.getTimestamp()).send({ from: accounts[0] }).then(
        result => {
         this.setState({ successfulResponse : "The document with hash '"+docHash+"' has been certified 🤟", 
@@ -214,7 +215,39 @@ class App extends Component {
   render() {
     
     if (!this.state.web3) {
-      return <div>Loading Web3, accounts, and contract...</div>;
+      return (
+
+      <div className="App">  
+          
+        <nav className="navbar navbar-expand-lg navbar-light bg-light">
+          
+          <a className="navbar-brand" href="#">
+            <img src="https://app.docuten.com/customizations/images/logo/logo.png" width="200" alt=""/>Blockchain Certification dApp
+          </a>
+        </nav>
+
+        <div className="container-fluid">
+        <br></br>
+        <div className="row">    
+            <div className="col-sm"></div>              
+            <div className="col-sm">
+                <div className="card" >
+                  <div className="card-body">
+                    <h5 className="card-title">TO USE THIS DAPP YOU NEED METAMASK</h5><br></br>
+                    <p className="card-text"> In order to read and write on Ethereum you need a dApp-enabled browser.</p>
+                    <div className="container-fluid">
+                      If you are not using a dApp enabled browser you can install the <a href="http://metamask.com" target="_blank">Metamask</a> plugin and login! 
+                    </div>                    
+                  </div>
+                  <img class="card-img-top" src="../../metamaskConnectorLogo.png" alt="Metamask not loaded yet"></img>
+                  
+                </div>
+            </div>
+            <div className="col-sm"></div>
+        </div>
+        </div>
+       </div>
+      );
     }
     return (
       
