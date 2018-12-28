@@ -1,0 +1,9 @@
+{
+    "solidity.linter": "solhint",
+    "solidity.solhintRules": {
+        "avoid-sha3": "warn"
+    },
+    "editor.tabSize": 2,
+    "editor.insertSpaces": true,
+    "editor.detectIndentation": false,
+}

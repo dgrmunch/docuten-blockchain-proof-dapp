@@ -1,11 +1,11 @@
 {
   "contractName": "HasAuditRegistry",
   "abi": [],
-  "bytecode": "0x6080604052348015600f57600080fd5b50603580601d6000396000f3fe6080604052600080fdfea165627a7a723058204324c137aede424438695075be2801b73a2b3d0ed2114fce652724d181458dce0029",
-  "deployedBytecode": "0x6080604052600080fdfea165627a7a723058204324c137aede424438695075be2801b73a2b3d0ed2114fce652724d181458dce0029",
-  "sourceMap": "55:147:1:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;55:147:1;;;;;;;",
-  "deployedSourceMap": "55:147:1:-;;;;;",
-  "source": "pragma solidity ^0.5.0;\n\n/* @title HasAuditRegistry */\ncontract HasAuditRegistry {\n  \n  struct AuditRegistry {      \n      string description;\n      string timestamp;\n      uint blockTimestamp;\n  }\n  \n}",
+  "bytecode": "0x6080604052348015600f57600080fd5b50603580601d6000396000f3fe6080604052600080fdfea165627a7a7230582064e34891e1a57950ea7d7c36663c56d28b59e93a7743acb157057e6f572aac130029",
+  "deployedBytecode": "0x6080604052600080fdfea165627a7a7230582064e34891e1a57950ea7d7c36663c56d28b59e93a7743acb157057e6f572aac130029",
+  "sourceMap": "56:157:1:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;56:157:1;;;;;;;",
+  "deployedSourceMap": "56:157:1:-;;;;;",
+  "source": "pragma solidity ^0.5.0;\n\n\n/* @title HasAuditRegistry */\ncontract HasAuditRegistry {\n  \n    struct AuditRegistry {      \n        string description;\n        string timestamp;\n        uint blockTimestamp;\n    }\n  \n}",
   "sourcePath": "/Users/xmunch/Desktop/Projects/Ethereum Projects/docuten-blockchain-proof/contracts/HasAuditRegistry.sol",
   "ast": {
     "absolutePath": "/Users/xmunch/Desktop/Projects/Ethereum Projects/docuten-blockchain-proof/contracts/HasAuditRegistry.sol",
@@ -51,7 +51,7 @@
                 "name": "description",
                 "nodeType": "VariableDeclaration",
                 "scope": 153,
-                "src": "123:18:1",
+                "src": "128:18:1",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -62,7 +62,7 @@
                   "id": 147,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
-                  "src": "123:6:1",
+                  "src": "128:6:1",
                   "typeDescriptions": {
                     "typeIdentifier": "t_string_storage_ptr",
                     "typeString": "string"
@@ -77,7 +77,7 @@
                 "name": "timestamp",
                 "nodeType": "VariableDeclaration",
                 "scope": 153,
-                "src": "149:16:1",
+                "src": "156:16:1",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -88,7 +88,7 @@
                   "id": 149,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
-                  "src": "149:6:1",
+                  "src": "156:6:1",
                   "typeDescriptions": {
                     "typeIdentifier": "t_string_storage_ptr",
                     "typeString": "string"
@@ -103,7 +103,7 @@
                 "name": "blockTimestamp",
                 "nodeType": "VariableDeclaration",
                 "scope": 153,
-                "src": "173:19:1",
+                "src": "182:19:1",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -114,7 +114,7 @@
                   "id": 151,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
-                  "src": "173:4:1",
+                  "src": "182:4:1",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -127,15 +127,15 @@
             "name": "AuditRegistry",
             "nodeType": "StructDefinition",
             "scope": 154,
-            "src": "88:109:1",
+            "src": "91:117:1",
             "visibility": "public"
           }
         ],
         "scope": 155,
-        "src": "55:147:1"
+        "src": "56:157:1"
       }
     ],
-    "src": "0:202:1"
+    "src": "0:213:1"
   },
   "legacyAST": {
     "absolutePath": "/Users/xmunch/Desktop/Projects/Ethereum Projects/docuten-blockchain-proof/contracts/HasAuditRegistry.sol",
@@ -181,7 +181,7 @@
                 "name": "description",
                 "nodeType": "VariableDeclaration",
                 "scope": 153,
-                "src": "123:18:1",
+                "src": "128:18:1",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -192,7 +192,7 @@
                   "id": 147,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
-                  "src": "123:6:1",
+                  "src": "128:6:1",
                   "typeDescriptions": {
                     "typeIdentifier": "t_string_storage_ptr",
                     "typeString": "string"
@@ -207,7 +207,7 @@
                 "name": "timestamp",
                 "nodeType": "VariableDeclaration",
                 "scope": 153,
-                "src": "149:16:1",
+                "src": "156:16:1",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -218,7 +218,7 @@
                   "id": 149,
                   "name": "string",
                   "nodeType": "ElementaryTypeName",
-                  "src": "149:6:1",
+                  "src": "156:6:1",
                   "typeDescriptions": {
                     "typeIdentifier": "t_string_storage_ptr",
                     "typeString": "string"
@@ -233,7 +233,7 @@
                 "name": "blockTimestamp",
                 "nodeType": "VariableDeclaration",
                 "scope": 153,
-                "src": "173:19:1",
+                "src": "182:19:1",
                 "stateVariable": false,
                 "storageLocation": "default",
                 "typeDescriptions": {
@@ -244,7 +244,7 @@
                   "id": 151,
                   "name": "uint",
                   "nodeType": "ElementaryTypeName",
-                  "src": "173:4:1",
+                  "src": "182:4:1",
                   "typeDescriptions": {
                     "typeIdentifier": "t_uint256",
                     "typeString": "uint256"
@@ -257,15 +257,15 @@
             "name": "AuditRegistry",
             "nodeType": "StructDefinition",
             "scope": 154,
-            "src": "88:109:1",
+            "src": "91:117:1",
             "visibility": "public"
           }
         ],
         "scope": 155,
-        "src": "55:147:1"
+        "src": "56:157:1"
       }
     ],
-    "src": "0:202:1"
+    "src": "0:213:1"
   },
   "compiler": {
     "name": "solc",
@@ -273,7 +273,7 @@
   },
   "networks": {},
   "schemaVersion": "3.0.0",
-  "updatedAt": "2018-12-26T14:01:38.761Z",
+  "updatedAt": "2018-12-27T14:54:45.915Z",
   "devdoc": {
     "methods": {}
   },
