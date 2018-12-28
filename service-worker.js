@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/3.6.3/workbox-sw.js");
 
 importScripts(
-  "/docuten-blockchain-proof-dapp/precache-manifest.800eca79f3d27a018f421dc09a3ee92d.js"
+  "/docuten-blockchain-proof-dapp/precache-manifest.1f2da86e92cbe0e9abe8cb1f6ce3e69b.js"
 );
 
 workbox.clientsClaim();
