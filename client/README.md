@@ -1,16 +1,34 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# To use it
 
-## Available Scripts
+Access  https://dgrmunch.github.io/docuten-blockchain-proof-dapp"
 
-In the project directory, you can run:
+# To run it in your own server
 
-### `npm start`
+## Installation
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+npm install
+npm install truffle-hdwallet-provider
+npm install --save gh-pages
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+
+## Runninbg the dApp
+
+### On one shell
+
+Run:
+
+`truffle migrate --reset`
+
+This will deploy the smart contracts.
+
+### On another shell
+
+`cd client`
+`npm run start`
+
+This will run a node dApp. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+You will need Metamask in your browser to make it work<br>
 
 ### `npm test`
 
