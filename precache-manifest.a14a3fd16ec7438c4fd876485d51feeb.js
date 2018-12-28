@@ -1,11 +1,11 @@
 self.__precacheManifest = [
   {
-    "revision": "b6e1ef92968d246a1b54",
+    "revision": "061b5cb1bd7fe3fdb6f5",
     "url": "/docuten-blockchain-proof-dapp/static/css/main.72a66e3d.chunk.css"
   },
   {
-    "revision": "b6e1ef92968d246a1b54",
-    "url": "/docuten-blockchain-proof-dapp/static/js/main.b6e1ef92.chunk.js"
+    "revision": "061b5cb1bd7fe3fdb6f5",
+    "url": "/docuten-blockchain-proof-dapp/static/js/main.061b5cb1.chunk.js"
   },
   {
     "revision": "1d8f1739313f7a0418eb",
@@ -16,7 +16,7 @@ self.__precacheManifest = [
     "url": "/docuten-blockchain-proof-dapp/static/js/runtime~main.15b79285.js"
   },
   {
-    "revision": "1ba57ec32d7f86dd4e5fa1cbf207f080",
+    "revision": "6e02e4ad146911a55e4cd45313288691",
     "url": "/docuten-blockchain-proof-dapp/index.html"
   }
 ];
