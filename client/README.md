@@ -11,13 +11,18 @@ npm install truffle-hdwallet-provider
 npm install --save gh-pages
 
 
-## Runninbg the dApp
+## Running the dApp
 
 ### On one shell
 
 Run:
 
-`truffle migrate --reset`
+`truffle migrate --network ropsten`
+
+or
+
+`truffle migrate --reset` (for local test)
+
 
 This will deploy the smart contracts.
 
@@ -30,33 +35,22 @@ This will run a node dApp. Open [http://localhost:3000](http://localhost:3000) t
 
 You will need Metamask in your browser to make it work<br>
 
-### `npm test`
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Deploy the dApp
 
-### `npm run build`
+`truffle migrate --reset --network ropsten`
+`npm run deploy`
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+It will be deployed here: https://dgrmunch.github.io/docuten-blockchain-proof-dapp/
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Test the smart contracts
 
-### `npm run eject`
+`truffle test`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Get the ABI of a contract to use in MyEtherWallet
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+const fs = require('fs');
+const contract = JSON.parse(fs.readFileSync('client/src/contracts/ProofOfLife.json', 'utf8'));
+console.log(JSON.stringify(contract.abi));
