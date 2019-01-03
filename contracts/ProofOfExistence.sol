@@ -58,7 +58,7 @@ contract ProofOfExistence is Lockable {
     /* @notice Get Document Details
     * @dev Retrieves all the information of a document
     * @param _documentHash - Hash of the document
-    * @return uint256 id, string docHash, address documentOwner
+    * @return uint256 id, string docHash, string ipfsHash, address documentOwner
     */
     function getDocumentDetailsByHash(string memory _documentHash) public view
     returns (uint256, string memory, string memory, address) {

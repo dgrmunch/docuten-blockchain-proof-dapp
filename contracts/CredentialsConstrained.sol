@@ -4,7 +4,7 @@ pragma solidity ^0.5.0;
 /* @title CredentialsConstrained */
 contract CredentialsConstrained {
     
-      // State
+    // State
     mapping(address  => bool) public authorizedUsers;
     address public contractOwner;
     bool public isOpenToEveryUser;
