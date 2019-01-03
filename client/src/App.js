@@ -26,10 +26,11 @@ class App extends Component {
             contract: null,
             shouldHideDetailsSection: true,
             shouldHideSuccessAlert: true,           
+            shouldHideWarningAlert: true,        
             shouldHideErrorAlert: true,
             successfulResponse: '',
             auditRegistries: '',
-            errorResponse: ''
+            warningResponse: ''
           };
   
   //Event Handlers  
@@ -55,6 +56,16 @@ class App extends Component {
   certifyDocument(e) {
     
     const { accounts, contract, docHash, ipfsHash } = this.state;
+
+    // We display a notification explaining that we are waiting for the transaction to be mined
+    this.setState({ 
+      warningResponse : 'A signed transaction will be included in the next mined block. Waiting for the Ethereum Network... ',
+      shouldHideSuccessAlert : true,
+      shouldHideErrorAlert : true,
+      shouldHideWarningAlert : false,
+      shouldHideDetailsSection: true,   
+      details: ''
+    });
     
     contract.methods.certifyDocumentCreationWithIPFSHash(docHash, ipfsHash, this.getTimestamp()).send({ from: accounts[0] }).then(
        result => {
@@ -62,6 +73,8 @@ class App extends Component {
                         block: result.blockHash,
                         transaction: result.transactionHash,
                         shouldHideSuccessAlert : false,
+                        shouldHideWarningAlert : true,
+                        shouldHideErrorAlert : true,
                         shouldHideDetailsSection: true,   
                         details: ''
                       });
@@ -77,6 +90,16 @@ class App extends Component {
     
     const { accounts, contract, docHash, registryInfo } = this.state;
     
+    // We display a notification explaining that we are waiting for the transaction to be mined
+    this.setState({ 
+      warningResponse : 'A signed transaction will be included in the next mined block. Waiting for the Ethereum Network... ',
+      shouldHideSuccessAlert : true,
+      shouldHideErrorAlert : true,
+      shouldHideWarningAlert : false,
+      shouldHideDetailsSection: true,   
+      details: ''
+    });
+    
     //Retrieve document id from hash
     const docId = await contract.methods.getId(docHash).call();
     
@@ -88,6 +111,8 @@ class App extends Component {
                         transaction: result.transactionHash,
                         shouldHideSuccessAlert : false,
                         shouldHideDetailsSection: true,   
+                        shouldHideWarningAlert : true,
+                        shouldHideErrorAlert : true,
                         details: ''
                       });  
         
@@ -108,34 +133,55 @@ class App extends Component {
   async viewDetails (doc) {
     
     const { contract } = this.state;
-    
-    // Update state of document details in html view
-    this.setState({ shouldHideDetailsSection: false, //show details section
-                    currentDocHash :  doc[1],                     
-                    currentDocOwner :  doc[3]
-    }); 
-    
-    // Include link to IPFS resource if available
-    if(doc[2] !== '' && doc[2] !== undefined){
-      this.setState({ currentDocIpfsLink :  '<a href="https://gateway.ipfs.io/ipfs/'+ doc[2]+'">/ipfs/'+doc[2]+'</a>'  }); 
+
+    // If there is not any registry in the smart contract status asocitated with docHash
+    // the returned owner will be '0x0000000000000000000000000000000000000000'
+    // In that case we display an error message explaining that that document is not certified
+    if(doc[3] === '0x0000000000000000000000000000000000000000'){
+      
+      this.setState({ 
+        errorResponse : 'Sorry! There is not any document with the hash <b>'+doc[1]+'</b> certified with this dApp 😒 ',
+        shouldHideSuccessAlert : true,
+        shouldHideWarningAlert : true,
+        shouldHideErrorAlert : false,
+        shouldHideDetailsSection: true,   
+        details: ''
+      });
+      
+    // Otherwise we display the certified document details
     } else {
-      this.setState({ currentDocIpfsLink :  ''  }); 
-    }   
-     
-    // Retrieve also audit registries
-    const auditRegistriesNumber = await contract.methods.countAuditRegistriesByDocumentHash(doc[1]).call();
-    var registries = [];
-    for(var i = 0; i<auditRegistriesNumber; i++){
-      const auditRegistry = await contract.methods.getAuditRegistryByDocumentHash(doc[1], i).call();
-      registries[i] = auditRegistry;
-    }
-   
-    this.setState({ auditRegistries:  registries.map((auditReg, i) => <div className="row" key={i}>
-                                                                          <div className="col-sm"><textarea disabled="disabled" rows="2" cols="40">{auditReg[0]}</textarea></div>                                                
-                                                                          <div className="col-sm"><FontAwesomeIcon icon="calendar" /> {auditReg[1]}</div>
-                                                                          <div className="col-sm"><FontAwesomeIcon icon="history" /> {auditReg[2].toString()}</div>
-                                                                      </div>)});
-    }
+    
+      // Update state of document details in html view
+      this.setState({ shouldHideDetailsSection: false, //show details section
+                      currentDocHash :  doc[1],                     
+                      currentDocOwner :  doc[3],
+                      shouldHideSuccessAlert : true,
+                      shouldHideWarningAlert : true,
+                      shouldHideErrorAlert : true
+      }); 
+      
+      // Include link to IPFS resource if available
+      if(doc[2] !== '' && doc[2] !== undefined){
+        this.setState({ currentDocIpfsLink :  '<a href="https://gateway.ipfs.io/ipfs/'+ doc[2]+'">/ipfs/'+doc[2]+'</a>'  }); 
+      } else {
+        this.setState({ currentDocIpfsLink :  ''  }); 
+      }   
+      
+      // Retrieve also audit registries
+      const auditRegistriesNumber = await contract.methods.countAuditRegistriesByDocumentHash(doc[1]).call();
+      var registries = [];
+      for(var i = 0; i<auditRegistriesNumber; i++){
+        const auditRegistry = await contract.methods.getAuditRegistryByDocumentHash(doc[1], i).call();
+        registries[i] = auditRegistry;
+      }
+    
+      this.setState({ auditRegistries:  registries.map((auditReg, i) => <div className="row" key={i}>
+                                                                            <div className="col-sm"><textarea disabled="disabled" rows="2" cols="40">{auditReg[0]}</textarea></div>                                                
+                                                                            <div className="col-sm"><FontAwesomeIcon icon="calendar" /> {auditReg[1]}</div>
+                                                                            <div className="col-sm"><FontAwesomeIcon icon="history" /> {auditReg[2].toString()}</div>
+                                                                        </div>)});
+    } // end if-else
+  }
 
   // Function to refresh global status based on contract information
   initializeState = async () => {
@@ -155,6 +201,8 @@ class App extends Component {
       //Display list of documents (clicking on each button will display the details of each doc)   
       this.setState({ myDocuments:  documents.map((doc, i) =><tr key={i}><td><button className="btn btn-outline-secondary btn-sm"  onClick={() => {this.viewDetails(doc)}} type="submit">{doc[1]}</button> </td></tr>)});
     }
+
+    this.setState({ shouldHideWarningAlert : true, shouldHideErrorAlert: true });
   };
   
   // Initial function for dApp to work
@@ -174,6 +222,11 @@ class App extends Component {
         ProofOfLifeContract.abi,
         deployedNetwork && deployedNetwork.address,
       );
+
+      console.log("dApp connected to "+networkId);
+      console.log("Address: "+deployedNetwork.address);
+      console.log("ABI: "+ProofOfLifeContract.abi);
+      
       // Set web3, accounts, and contract to the state, and then proceed with an
       // initialization based on the interaction with the contract's methods.
       this.setState({ web3, accounts, contract: instance }, this.initializeState);
@@ -208,7 +261,7 @@ class App extends Component {
         mm = '0'+mm
     } 
 
-    return mm + '-' + dd + '-' + yyyy + ' ';
+    return mm + '-' + dd + '-' + yyyy + ' ' + date.getHours() + ':'+date.getMinutes()+':'+date.getSeconds() ;
   }
   
   // Render function
@@ -233,13 +286,14 @@ class App extends Component {
             <div className="col-sm">
                 <div className="card" >
                   <div className="card-body">
-                    <h5 className="card-title">TO USE THIS DAPP YOU NEED METAMASK</h5><br></br>
+                    <h5 className="card-title">Ready to login with Ethereum?</h5><br></br>
                     <p className="card-text"> In order to read and write on Ethereum you need a dApp-enabled browser.</p>
                     <div className="container-fluid">
-                      If you are not using a dApp enabled browser you can install the <a href="http://metamask.com" target="_blank">Metamask</a> plugin and login! 
-                    </div>                    
+                    <div className="alert alert-warning" role="alert">
+                     If you are not using a dApp enabled browser you can install the <a href="http://metamask.com" target="_blank">Metamask</a> plugin and login! 
+                     </div></div>                    
                   </div>
-                  <img class="card-img-top" src="../../metamaskConnectorLogo.png" alt="Metamask not loaded yet"></img>
+                  <img class="card-img-top" src="https://dgrmunch.github.io/docuten-blockchain-proof-dapp/metamaskConnectorLogo.png" alt="Metamask not loaded yet"></img>
                   
                 </div>
             </div>
@@ -297,9 +351,16 @@ class App extends Component {
                       </div>
                     </div>
                     
+                    <div className={this.state.shouldHideWarningAlert ? 'hidden' : ''}>
+                      <div className="alert alert-warning" role="alert">
+                          {this.state.warningResponse}<br></br>
+                          <img src="https://dgrmunch.github.io/docuten-blockchain-proof-dapp/ajax-loader.gif"></img>
+                        </div>
+                    </div>
+
                     <div className={this.state.shouldHideErrorAlert ? 'hidden' : ''}>
-                      <div className="alert alert-error" role="alert">
-                          {this.state.errorResponse}
+                      <div className="alert alert-danger" role="alert">
+                        <span dangerouslySetInnerHTML={{__html: this.state.errorResponse}}/><br></br>
                       </div>
                     </div>
                  
