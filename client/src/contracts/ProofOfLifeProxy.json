@@ -1,20 +1,48 @@
 {
   "contractName": "ProofOfLifeProxy",
-  "abi": [],
-  "bytecode": "0x6080604052348015600f57600080fd5b50603580601d6000396000f3fe6080604052600080fdfea165627a7a723058201afaeef849e9e5293d5c8c83606f319c2d352d499c2f7b381e1ba69ad3f237c90029",
-  "deployedBytecode": "0x6080604052600080fdfea165627a7a723058201afaeef849e9e5293d5c8c83606f319c2d352d499c2f7b381e1ba69ad3f237c90029",
-  "sourceMap": "111:548:6:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;111:548:6;;;;;;;",
-  "deployedSourceMap": "111:548:6:-;;;;;",
-  "source": "pragma solidity ^0.5.0;\n\nimport \"./HasAuditRegistry.sol\";\n\n\n/* @title Proof of Life Proxy with delegateCall */\ncontract ProofOfLifeProxy is HasAuditRegistry {\n \n    // State\n\n    /* @notice Lock contract\n    * @dev Maintenance and security circuit locker\n    */\n    //function lock() public {\n    /*   uint256256 val = 100;\n        delegatedContractAddress.delegatecall(abi.encodeWithSignature(\"foo(uint256256,uint256256)\")), val, val);\n      delegatedContractAddress.delegatecall(bytes4(keccak256(\"storeValue(uint256256)\")), val);\n      bytes memory delegateBytes = bytes4(keccak256(\"lock()\"));\n      contractAddress.delegatecall(delegateBytes);*/\n\n    //}\n}",
+  "abi": [
+    {
+      "constant": true,
+      "inputs": [],
+      "name": "delegatedContractAddress",
+      "outputs": [
+        {
+          "name": "",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "view",
+      "type": "function",
+      "signature": "0x75b6e378"
+    },
+    {
+      "inputs": [
+        {
+          "name": "existingContractAddress",
+          "type": "address"
+        }
+      ],
+      "payable": false,
+      "stateMutability": "nonpayable",
+      "type": "constructor",
+      "signature": "constructor"
+    }
+  ],
+  "bytecode": "0x608060405234801561001057600080fd5b506040516020806101798339810180604052602081101561003057600080fd5b8101908080519060200190929190505050806000806101000a81548173ffffffffffffffffffffffffffffffffffffffff021916908373ffffffffffffffffffffffffffffffffffffffff1602179055505060e9806100906000396000f3fe608060405260043610603f576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806375b6e378146044575b600080fd5b348015604f57600080fd5b5060566098565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff168156fea165627a7a72305820a37237195ee968d767cc5974e63094150f03ff61ad9d0cc82df6e3eba9d940350029",
+  "deployedBytecode": "0x608060405260043610603f576000357c0100000000000000000000000000000000000000000000000000000000900463ffffffff16806375b6e378146044575b600080fd5b348015604f57600080fd5b5060566098565b604051808273ffffffffffffffffffffffffffffffffffffffff1673ffffffffffffffffffffffffffffffffffffffff16815260200191505060405180910390f35b6000809054906101000a900473ffffffffffffffffffffffffffffffffffffffff168156fea165627a7a72305820a37237195ee968d767cc5974e63094150f03ff61ad9d0cc82df6e3eba9d940350029",
+  "sourceMap": "111:717:6:-;;;708:118;8:9:-1;5:2;;;30:1;27;20:12;5:2;708:118:6;;;;;;;;;;;;;13:2:-1;8:3;5:11;2:2;;;29:1;26;19:12;2:2;708:118:6;;;;;;;;;;;;;;;;796:23;769:24;;:50;;;;;;;;;;;;;;;;;;708:118;111:717;;;;;;",
+  "deployedSourceMap": "111:717:6:-;;;;;;;;;;;;;;;;;;;;;;;;178:39;;8:9:-1;5:2;;;30:1;27;20:12;5:2;178:39:6;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;:::o",
+  "source": "pragma solidity ^0.5.0;\n\nimport \"./HasAuditRegistry.sol\";\n\n\n/* @title Proof of Life Proxy with delegateCall */\ncontract ProofOfLifeProxy is HasAuditRegistry {\n \n    // State\n    address public delegatedContractAddress;\n\n    /* @notice Lock contract\n    * @dev Maintenance and security circuit locker\n    */\n    //function lock() public {\n    /*   uint256256 val = 100;\n        delegatedContractAddress.delegatecall(abi.encodeWithSignature(\"foo(uint256256,uint256256)\")), val, val);\n      delegatedContractAddress.delegatecall(bytes4(keccak256(\"storeValue(uint256256)\")), val);\n      bytes memory delegateBytes = bytes4(keccak256(\"lock()\"));\n      contractAddress.delegatecall(delegateBytes);*/\n\n    //}\n\n    constructor (address existingContractAddress) public {\n      delegatedContractAddress = existingContractAddress;\n    }\n}",
   "sourcePath": "/Users/xmunch/Desktop/Projects/Ethereum Projects/docuten-blockchain-proof/contracts/ProofOfLifeProxy.sol",
   "ast": {
     "absolutePath": "/Users/xmunch/Desktop/Projects/Ethereum Projects/docuten-blockchain-proof/contracts/ProofOfLifeProxy.sol",
     "exportedSymbols": {
       "ProofOfLifeProxy": [
-        868
+        880
       ]
     },
-    "id": 869,
+    "id": 881,
     "nodeType": "SourceUnit",
     "nodes": [
       {
@@ -33,7 +61,7 @@
         "file": "./HasAuditRegistry.sol",
         "id": 865,
         "nodeType": "ImportDirective",
-        "scope": 869,
+        "scope": 881,
         "sourceUnit": 155,
         "src": "25:32:6",
         "symbolAliases": [],
@@ -66,28 +94,163 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 868,
+        "id": 880,
         "linearizedBaseContracts": [
-          868,
+          880,
           154
         ],
         "name": "ProofOfLifeProxy",
         "nodeType": "ContractDefinition",
-        "nodes": [],
-        "scope": 869,
-        "src": "111:548:6"
+        "nodes": [
+          {
+            "constant": false,
+            "id": 869,
+            "name": "delegatedContractAddress",
+            "nodeType": "VariableDeclaration",
+            "scope": 880,
+            "src": "178:39:6",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_address",
+              "typeString": "address"
+            },
+            "typeName": {
+              "id": 868,
+              "name": "address",
+              "nodeType": "ElementaryTypeName",
+              "src": "178:7:6",
+              "stateMutability": "nonpayable",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address",
+                "typeString": "address"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 878,
+              "nodeType": "Block",
+              "src": "761:65:6",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 876,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 874,
+                      "name": "delegatedContractAddress",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 869,
+                      "src": "769:24:6",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 875,
+                      "name": "existingContractAddress",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 871,
+                      "src": "796:23:6",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "769:50:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 877,
+                  "nodeType": "ExpressionStatement",
+                  "src": "769:50:6"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 879,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 872,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 871,
+                  "name": "existingContractAddress",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 879,
+                  "src": "721:31:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 870,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "721:7:6",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "720:33:6"
+            },
+            "returnParameters": {
+              "id": 873,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "761:0:6"
+            },
+            "scope": 880,
+            "src": "708:118:6",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 881,
+        "src": "111:717:6"
       }
     ],
-    "src": "0:659:6"
+    "src": "0:828:6"
   },
   "legacyAST": {
     "absolutePath": "/Users/xmunch/Desktop/Projects/Ethereum Projects/docuten-blockchain-proof/contracts/ProofOfLifeProxy.sol",
     "exportedSymbols": {
       "ProofOfLifeProxy": [
-        868
+        880
       ]
     },
-    "id": 869,
+    "id": 881,
     "nodeType": "SourceUnit",
     "nodes": [
       {
@@ -106,7 +269,7 @@
         "file": "./HasAuditRegistry.sol",
         "id": 865,
         "nodeType": "ImportDirective",
-        "scope": 869,
+        "scope": 881,
         "sourceUnit": 155,
         "src": "25:32:6",
         "symbolAliases": [],
@@ -139,27 +302,169 @@
         "contractKind": "contract",
         "documentation": null,
         "fullyImplemented": true,
-        "id": 868,
+        "id": 880,
         "linearizedBaseContracts": [
-          868,
+          880,
           154
         ],
         "name": "ProofOfLifeProxy",
         "nodeType": "ContractDefinition",
-        "nodes": [],
-        "scope": 869,
-        "src": "111:548:6"
+        "nodes": [
+          {
+            "constant": false,
+            "id": 869,
+            "name": "delegatedContractAddress",
+            "nodeType": "VariableDeclaration",
+            "scope": 880,
+            "src": "178:39:6",
+            "stateVariable": true,
+            "storageLocation": "default",
+            "typeDescriptions": {
+              "typeIdentifier": "t_address",
+              "typeString": "address"
+            },
+            "typeName": {
+              "id": 868,
+              "name": "address",
+              "nodeType": "ElementaryTypeName",
+              "src": "178:7:6",
+              "stateMutability": "nonpayable",
+              "typeDescriptions": {
+                "typeIdentifier": "t_address",
+                "typeString": "address"
+              }
+            },
+            "value": null,
+            "visibility": "public"
+          },
+          {
+            "body": {
+              "id": 878,
+              "nodeType": "Block",
+              "src": "761:65:6",
+              "statements": [
+                {
+                  "expression": {
+                    "argumentTypes": null,
+                    "id": 876,
+                    "isConstant": false,
+                    "isLValue": false,
+                    "isPure": false,
+                    "lValueRequested": false,
+                    "leftHandSide": {
+                      "argumentTypes": null,
+                      "id": 874,
+                      "name": "delegatedContractAddress",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 869,
+                      "src": "769:24:6",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "nodeType": "Assignment",
+                    "operator": "=",
+                    "rightHandSide": {
+                      "argumentTypes": null,
+                      "id": 875,
+                      "name": "existingContractAddress",
+                      "nodeType": "Identifier",
+                      "overloadedDeclarations": [],
+                      "referencedDeclaration": 871,
+                      "src": "796:23:6",
+                      "typeDescriptions": {
+                        "typeIdentifier": "t_address",
+                        "typeString": "address"
+                      }
+                    },
+                    "src": "769:50:6",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "id": 877,
+                  "nodeType": "ExpressionStatement",
+                  "src": "769:50:6"
+                }
+              ]
+            },
+            "documentation": null,
+            "id": 879,
+            "implemented": true,
+            "kind": "constructor",
+            "modifiers": [],
+            "name": "",
+            "nodeType": "FunctionDefinition",
+            "parameters": {
+              "id": 872,
+              "nodeType": "ParameterList",
+              "parameters": [
+                {
+                  "constant": false,
+                  "id": 871,
+                  "name": "existingContractAddress",
+                  "nodeType": "VariableDeclaration",
+                  "scope": 879,
+                  "src": "721:31:6",
+                  "stateVariable": false,
+                  "storageLocation": "default",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_address",
+                    "typeString": "address"
+                  },
+                  "typeName": {
+                    "id": 870,
+                    "name": "address",
+                    "nodeType": "ElementaryTypeName",
+                    "src": "721:7:6",
+                    "stateMutability": "nonpayable",
+                    "typeDescriptions": {
+                      "typeIdentifier": "t_address",
+                      "typeString": "address"
+                    }
+                  },
+                  "value": null,
+                  "visibility": "internal"
+                }
+              ],
+              "src": "720:33:6"
+            },
+            "returnParameters": {
+              "id": 873,
+              "nodeType": "ParameterList",
+              "parameters": [],
+              "src": "761:0:6"
+            },
+            "scope": 880,
+            "src": "708:118:6",
+            "stateMutability": "nonpayable",
+            "superFunction": null,
+            "visibility": "public"
+          }
+        ],
+        "scope": 881,
+        "src": "111:717:6"
       }
     ],
-    "src": "0:659:6"
+    "src": "0:828:6"
   },
   "compiler": {
     "name": "solc",
     "version": "0.5.0+commit.1d4f565a.Emscripten.clang"
   },
-  "networks": {},
+  "networks": {
+    "4447": {
+      "events": {},
+      "links": {},
+      "address": "0x92aF7E710dDB6d271e1319A3B75d6C54a0366439",
+      "transactionHash": "0xe25c4279049c92479049583a7d56966e0611d5a3811e1c4e565c606c77175e2b"
+    }
+  },
   "schemaVersion": "3.0.0",
-  "updatedAt": "2018-12-27T14:54:45.919Z",
+  "updatedAt": "2019-01-10T10:18:12.776Z",
   "devdoc": {
     "methods": {}
   },
