@@ -10,9 +10,9 @@ contract ProofOfExistence is Lockable {
     uint256 private lastId = 0;
     mapping(bytes32  => uint256) public idByDocumentHash;
     mapping(uint256  => address) public ownerByDocumentId;
-    mapping(uint256  => string) private ipfsHashByDocumentId;
-    mapping(uint256  => string) private hashByDocumentId;
-    mapping(address  => uint256[]) private documentsByOwnerAddress;
+    mapping(uint256  => string) public ipfsHashByDocumentId;
+    mapping(uint256  => string) public hashByDocumentId;
+    mapping(address  => uint256[]) public documentsByOwnerAddress;
     
     /* @notice Fallback function
     /* @dev It reverts the transaction for security reasons
