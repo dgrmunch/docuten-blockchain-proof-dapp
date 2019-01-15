@@ -27,7 +27,7 @@ contract Lockable is CredentialsConstrained {
     /* @notice Lock contract
     * @dev Maintenance and security circuit locker
     */
-    function lock() public onlyContractOwner onlyWhenUnlocked {
+    function lock() public onlyWhenUnlocked onlyContractOwner{
         isLocked = true;
         emit ContractLocked();
     }
@@ -35,7 +35,7 @@ contract Lockable is CredentialsConstrained {
     /* @notice Unlock contract
     * @dev Maintenance and security circuit unlocker
     */
-    function unlock() public onlyWhenLocked onlyContractOwner {
+    function unlock() public onlyWhenLocked onlyContractOwner{
         isLocked = false;
         emit ContractUnlocked();
     }
