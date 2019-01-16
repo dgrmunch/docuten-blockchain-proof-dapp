@@ -80,7 +80,12 @@ contract ProofOfLifeProxy is HasAuditRegistry {
     string memory _timestamp) public {
        
         (bool success, bytes memory data)  = delegateCallAddress.delegatecall(abi.encodeWithSignature("certifyDocumentCreationWithIPFSHash(string,string,string)", _documentHash, _ipfsHash, _timestamp));
-        emit DelegateCallEvent("certifyDocumentCreationWithIPFSHash", success);
+        
+        if(success){
+            emit DelegateCallEvent("certifyDocumentCreationWithIPFSHash", success);
+        } else {
+            revert();
+        }
     }
 
      /* @notice Append Audit Registry
@@ -93,7 +98,12 @@ contract ProofOfLifeProxy is HasAuditRegistry {
     function appendAuditRegistry(uint256 _id, string memory _description, string memory _timestamp) 
     public {
         (bool success, bytes memory data)  = delegateCallAddress.delegatecall(abi.encodeWithSignature("appendAuditRegistry(uint256,string,string)", _id, _description, _timestamp));
-        emit DelegateCallEvent("appendAuditRegistry", success);
+        
+        if(success){
+            emit DelegateCallEvent("appendAuditRegistry", success);
+        } else {
+            revert();
+        }
     }
     
     // ------ Query functions to request information about the contract state -------

@@ -1,8 +1,7 @@
 const path = require("path");
 var HDWalletProvider = require("truffle-hdwallet-provider");
 
-//var mnemonic = "CHANGE_ME"; //I don't publish my real mnemonic. Add your own
-var mnemonic = "nation airport burger toy vacuum mail neglect panel bundle cushion female illegal"
+var mnemonic = "CHANGE_ME"; //I don't publish my real mnemonic. Add your own
 
 module.exports = {
   // See <http://truffleframework.com/docs/advanced/configuration>
@@ -21,7 +20,7 @@ module.exports = {
       network_id: 3
     }, 
     alastria: {
-      host: "34.234.56.789",
+      host: "bchain01.enxendra.com",
       port: 22000,
       gasPrice: 0,
       network_id: "*" //1140
