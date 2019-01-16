@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import ProofOfLifeContract from "./contracts/ProofOfLife.json";
+import ProofOfLifeProxyContract from "./contracts/ProofOfLifeProxy.json";
 import getWeb3 from "./utils/getWeb3";
 import { library } from '@fortawesome/fontawesome-svg-core'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -217,15 +217,15 @@ class App extends Component {
 
       // Get the contract instance.
       const networkId = await web3.eth.net.getId();
-      const deployedNetwork = ProofOfLifeContract.networks[networkId];
+      const deployedNetwork = ProofOfLifeProxyContract.networks[networkId];
       const instance = new web3.eth.Contract(
-        ProofOfLifeContract.abi,
+        ProofOfLifeProxyContract.abi,
         deployedNetwork && deployedNetwork.address,
       );
 
       console.log("dApp connected to "+networkId);
       console.log("Address: "+deployedNetwork.address);
-      console.log("ABI: "+ProofOfLifeContract.abi);
+      console.log("ABI: "+ProofOfLifeProxyContract.abi);
       
       // Set web3, accounts, and contract to the state, and then proceed with an
       // initialization based on the interaction with the contract's methods.
