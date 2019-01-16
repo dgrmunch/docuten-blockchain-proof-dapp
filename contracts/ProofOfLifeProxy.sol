@@ -6,9 +6,9 @@ import "./HasAuditRegistry.sol";
 /* @title Proof of Life Proxy with delegateCall */
 contract ProofOfLifeProxy is HasAuditRegistry {
  
-    // State variables (to be updated by delegateCalls)
+    // State variables
     mapping(address  => bool) public authorizedUsers;
-    address public contractOwner; //used to override the delegate contractOwner value with the proxy contract's address
+    address public contractOwner;
     bool public isOpenToEveryUser;
     bool public isLocked;
     uint256 public lastId = 0;
@@ -51,6 +51,7 @@ contract ProofOfLifeProxy is HasAuditRegistry {
         delegateCallAddress = existingContractAddress;
     }
 
+
     //  ---- Functions with delegateCall -----
 
     /* @notice Lock contract
@@ -61,7 +62,7 @@ contract ProofOfLifeProxy is HasAuditRegistry {
         emit DelegateCallEvent("lock", success);
     }
     
-      /* @notice Unlock contract
+    /* @notice Unlock contract
     * @dev Maintenance and security circuit locker
     */
     function unlock() public onlyContractOwner {
@@ -118,7 +119,6 @@ contract ProofOfLifeProxy is HasAuditRegistry {
         return (_id, _documentHash, ipfsHashByDocumentId[_id], ownerByDocumentId[_id]);
     }
     
-    
     /* @notice Get auditRegistry by documentHash
     * @dev Retrieves the audit registry of a document
     * @param _documentHash - Hash of the document
@@ -163,7 +163,8 @@ contract ProofOfLifeProxy is HasAuditRegistry {
         auditRegistryByDocumentId[_id][_index].timestamp, auditRegistryByDocumentId[_id][_index].blockTimestamp);
     }
     
-    //Aux Functions
+    
+    //  ------ Aux Functions  ------ 
         
     /* @notice Get document id from hash
     * @dev Retrieves a document id from a string with the hash
@@ -192,8 +193,6 @@ contract ProofOfLifeProxy is HasAuditRegistry {
         assembly {
             result := mload(add(_stringInput, 32))
         }
-    } 
-
-
+    }
       
 }
