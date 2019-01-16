@@ -23,10 +23,13 @@
 
 
 
-# Ho wo use a currently deployed instance
+# How to use a currently deployed instance
 
-* Access https://dgrmunch.github.io/docuten-blockchain-proof-dapp"
+## Use directly the dApp:
+* Access https://dgrmunch.github.io/docuten-blockchain-proof-dapp
 * Connect Metamask to Ropsten
+
+## Use etherscan and interact directly with the proxy contract
 * More info about the addresses + ABIs for deployed smart contracts in the file deployed_addresses.txt
 
 # To run it in your own server
@@ -63,23 +66,26 @@ This will run a node dApp. Open [http://localhost:3000](http://localhost:3000) t
 You will need Metamask in your browser to make it work<br>
 
 
-## Deploy the dApp
+## Deploying the dApp in Github pages
 
 `truffle migrate --reset --network ropsten`
 `npm run deploy`
 
-It will be deployed here: https://dgrmunch.github.io/docuten-blockchain-proof-dapp/
-
+By default, it will be deployed here: https://dgrmunch.github.io/docuten-blockchain-proof-dapp/
+Update the configuration in truffle-config.js in order to adapt it to your needs.
 
 ## Test the smart contracts
 
 `truffle test`
 
+## How to get the ABI of the contract to use in MyEtherWallet?
 
-## Get the ABI of a contract to use in MyEtherWallet 
+* In deployed_address.txt (updated)
+* In the truffle develop shell, typing:
 
-* In truffle develop shell:
-
+```
 const fs = require('fs');
 const contract = JSON.parse(fs.readFileSync('client/src/contracts/ProofOfLife.json', 'utf8'));
 console.log(JSON.stringify(contract.abi));
+
+```
