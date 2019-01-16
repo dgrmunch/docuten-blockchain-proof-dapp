@@ -9,7 +9,7 @@
 
 ## To run your own
 
-* Check this video to see how the to run your own instance of the dApp:
+* Check this video to see how to run your own instance of the dApp:
 
 [![How to run the dApp](http://img.youtube.com/vi/U5QU9qvx7fA/0.jpg)](https://www.youtube.com/watch?v=U5QU9qvx7fA "How to run the dApp")
 
@@ -36,10 +36,12 @@
 
 ## Installation
 
+```
 npm install
 npm install truffle-hdwallet-provider
 npm install --save gh-pages
 
+```
 
 ## Running the dApp
 
@@ -58,9 +60,12 @@ This will deploy the smart contracts.
 
 ### On another shell
 
-`cd client`
-`npm run start`
 
+```
+cd client
+npm run start
+
+```
 This will run a node dApp. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
 You will need Metamask in your browser to make it work<br>
@@ -68,8 +73,11 @@ You will need Metamask in your browser to make it work<br>
 
 ## Deploying the dApp in Github pages
 
-`truffle migrate --reset --network ropsten`
-`npm run deploy`
+```
+truffle migrate --reset --network ropsten
+npm run deploy
+
+```
 
 By default, it will be deployed here: https://dgrmunch.github.io/docuten-blockchain-proof-dapp/
 Update the configuration in truffle-config.js in order to adapt it to your needs.
