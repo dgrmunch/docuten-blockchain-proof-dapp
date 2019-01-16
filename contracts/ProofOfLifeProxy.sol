@@ -99,7 +99,7 @@ contract ProofOfLifeProxy is HasAuditRegistry {
     // ------ Query functions to request information about the contract state -------
     
     /* @notice Get documents by owner
-    * @dev Retrieves a list with all the documents hashes of one owner
+    * @dev Retrieves a list with all the documents ids of one owner
     * @return bytes32[] documentsByOwnerAddress
     */
     function getDocumentsByOwner(address owner) public view 
@@ -163,9 +163,6 @@ contract ProofOfLifeProxy is HasAuditRegistry {
         auditRegistryByDocumentId[_id][_index].timestamp, auditRegistryByDocumentId[_id][_index].blockTimestamp);
     }
     
-    
-    //  ------ Aux Functions  ------ 
-        
     /* @notice Get document id from hash
     * @dev Retrieves a document id from a string with the hash
     * @param _documentHash - Hash of the document
@@ -177,7 +174,10 @@ contract ProofOfLifeProxy is HasAuditRegistry {
         bytes32 _docHash = stringToBytes32(_documentHash);
         return idByDocumentHash[_docHash];
     }
-              
+      
+    
+    //  ------ Aux Functions  ------ 
+        
     /* @notice StringToBytes32 (based on Grzegorz Kapkowski's method)
     * @ref https://ethereum.stackexchange.com/questions/9142/how-to-convert-a-string-to-bytes32
     * @dev Transforms a string in bytes32
