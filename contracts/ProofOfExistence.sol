@@ -53,50 +53,8 @@ contract ProofOfExistence is Lockable {
         documentsByOwnerAddress[msg.sender].push(_id); //Add hash to owner's documents list
       
         return _id;
-    }  
-    
-    /* @notice Get Document Details
-    * @dev Retrieves all the information of a document
-    * @param _documentHash - Hash of the document
-    * @return uint256 id, string docHash, string ipfsHash, address documentOwner
-    */
-    function getDocumentDetailsByHash(string memory _documentHash) public view
-    returns (uint256, string memory, string memory, address) {
-
-        uint256 _id = getId(_documentHash);
-        return (_id, _documentHash, ipfsHashByDocumentId[_id], ownerByDocumentId[_id]);
     }
-    
-    /* @notice Get Document Details
-    * @dev Retrieves all the information of a document
-    * @param _id - Id of the document
-    * @return uint256 id, string docHash, address documentOwner
-    */
-    function getDocumentDetailsById(uint256 _id) public view
-    returns (uint256, string memory, string memory, address) {
-        return (_id, hashByDocumentId[_id], ipfsHashByDocumentId[_id], ownerByDocumentId[_id]);
-    }
-    
-    /* @notice Get documents by owner
-    * @dev Retrieves a list with all the documents hashes of one owner
-    * @return bytes32[] documentsByOwnerAddress
-    */
-    function getDocumentsByOwner(address owner) public view 
-    returns(uint256[] memory) {
-        return documentsByOwnerAddress[owner];
-    }
-    
-    /* @notice Get document id from hash
-    * @dev Retrieves a document id from a string with the hash
-    * @param _documentHash - Hash of the document
-    * @return uint256
-    */
-    function getId(string memory _documentHash) public view 
-    returns(uint256) { 
-              
-        bytes32 _docHash = stringToBytes32(_documentHash);
-        return idByDocumentHash[_docHash];
-    }
+  
         
     /* @notice StringToBytes32 (based on Grzegorz Kapkowski's method)
     * @ref https://ethereum.stackexchange.com/questions/9142/how-to-convert-a-string-to-bytes32
