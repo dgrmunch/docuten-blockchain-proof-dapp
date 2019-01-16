@@ -4,7 +4,26 @@
 * Project developed by Diego Gonzalez (@ Enxendra/Docuten) for ConsenSys Bootcamp 2019.
 * To be used for distributed proof-of-existence and proof-of-life experiments (using document hashes + ipfs hashes).
 
-# Use a currently deployed instance
+
+# Video tutorials 
+
+## To run your own
+
+* Check this video to see how the to run your own instance of the dApp:
+
+[![How to run the dApp](http://img.youtube.com/vi/U5QU9qvx7fA/0.jpg)](https://www.youtube.com/watch?v=U5QU9qvx7fA "How to run the dApp")
+
+* I have published also some instructions below, just in case you want to go deeper or if something in the video is not clear enough.
+
+## To use an online version
+
+* Check this video to see how the dApp works and how to use it:
+
+[![How to use it](http://img.youtube.com/vi/p14buBTG1kY/0.jpg)](https://www.youtube.com/watch?v=p14buBTG1kY "How to use it")
+
+
+
+# Ho wo use a currently deployed instance
 
 * Access https://dgrmunch.github.io/docuten-blockchain-proof-dapp"
 * Connect Metamask to Ropsten
@@ -57,7 +76,9 @@ It will be deployed here: https://dgrmunch.github.io/docuten-blockchain-proof-da
 `truffle test`
 
 
-## Get the ABI of a contract to use in MyEtherWallet
+## Get the ABI of a contract to use in MyEtherWallet 
+
+* In truffle develop shell:
 
 const fs = require('fs');
 const contract = JSON.parse(fs.readFileSync('client/src/contracts/ProofOfLife.json', 'utf8'));
