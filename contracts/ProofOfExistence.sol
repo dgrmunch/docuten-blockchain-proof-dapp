@@ -7,7 +7,7 @@ import "./Lockable.sol";
 contract ProofOfExistence is Lockable {
   
     // State
-    uint256 private lastId = 0;
+    uint256 public lastId = 0;
     mapping(bytes32  => uint256) public idByDocumentHash;
     mapping(uint256  => address) public ownerByDocumentId;
     mapping(uint256  => string) public ipfsHashByDocumentId;
