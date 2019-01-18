@@ -1,7 +1,7 @@
 # About this dApp
 
 * Ethereum dApp built on Solidity + React.
-* Project developed by Diego Gonzalez (@ Enxendra/Docuten) for ConsenSys Bootcamp 2019.
+* Project developed by Diego Gonzalez (@ Enxendra/Docuten) for ConsenSys Bootcamp 2019 (Twitter: @dgrmunch | Web: xmunch.com)
 * To be used for distributed proof-of-existence and proof-of-life experiments (using document hashes + ipfs hashes).
 
 
