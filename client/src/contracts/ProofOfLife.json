@@ -983,10 +983,10 @@
                       "name": "revert",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1118,
-                        1119
+                        1244,
+                        1245
                       ],
-                      "referencedDeclaration": 1118,
+                      "referencedDeclaration": 1244,
                       "src": "636:6:5",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_revert_pure$__$returns$__$",
@@ -1727,7 +1727,7 @@
                           "name": "block",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1103,
+                          "referencedDeclaration": 1229,
                           "src": "2635:5:5",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_block",
@@ -2336,10 +2336,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1116,
-                        1117
+                        1242,
+                        1243
                       ],
-                      "referencedDeclaration": 1117,
+                      "referencedDeclaration": 1243,
                       "src": "3574:7:5",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -2429,7 +2429,7 @@
                             "name": "msg",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1113,
+                            "referencedDeclaration": 1239,
                             "src": "3705:3:5",
                             "typeDescriptions": {
                               "typeIdentifier": "t_magic_message",
@@ -2490,10 +2490,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1116,
-                        1117
+                        1242,
+                        1243
                       ],
-                      "referencedDeclaration": 1117,
+                      "referencedDeclaration": 1243,
                       "src": "3671:7:5",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -2575,7 +2575,7 @@
                         "name": "now",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1115,
+                        "referencedDeclaration": 1241,
                         "src": "4029:3:5",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -3453,10 +3453,10 @@
                       "name": "revert",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1118,
-                        1119
+                        1244,
+                        1245
                       ],
-                      "referencedDeclaration": 1118,
+                      "referencedDeclaration": 1244,
                       "src": "636:6:5",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_revert_pure$__$returns$__$",
@@ -4197,7 +4197,7 @@
                           "name": "block",
                           "nodeType": "Identifier",
                           "overloadedDeclarations": [],
-                          "referencedDeclaration": 1103,
+                          "referencedDeclaration": 1229,
                           "src": "2635:5:5",
                           "typeDescriptions": {
                             "typeIdentifier": "t_magic_block",
@@ -4806,10 +4806,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1116,
-                        1117
+                        1242,
+                        1243
                       ],
-                      "referencedDeclaration": 1117,
+                      "referencedDeclaration": 1243,
                       "src": "3574:7:5",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -4899,7 +4899,7 @@
                             "name": "msg",
                             "nodeType": "Identifier",
                             "overloadedDeclarations": [],
-                            "referencedDeclaration": 1113,
+                            "referencedDeclaration": 1239,
                             "src": "3705:3:5",
                             "typeDescriptions": {
                               "typeIdentifier": "t_magic_message",
@@ -4960,10 +4960,10 @@
                       "name": "require",
                       "nodeType": "Identifier",
                       "overloadedDeclarations": [
-                        1116,
-                        1117
+                        1242,
+                        1243
                       ],
-                      "referencedDeclaration": 1117,
+                      "referencedDeclaration": 1243,
                       "src": "3671:7:5",
                       "typeDescriptions": {
                         "typeIdentifier": "t_function_require_pure$_t_bool_$_t_string_memory_ptr_$returns$__$",
@@ -5045,7 +5045,7 @@
                         "name": "now",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1115,
+                        "referencedDeclaration": 1241,
                         "src": "4029:3:5",
                         "typeDescriptions": {
                           "typeIdentifier": "t_uint256",
@@ -5510,8 +5510,8 @@
     "3": {
       "events": {},
       "links": {},
-      "address": "0xBFC4C156a1Fdce550C71800d8538f4cB3c4E9A3d",
-      "transactionHash": "0xa8611950228ad272089c8c0f813465d720ad860007bff9ccca9bd473bae2c89b"
+      "address": "0xFC6440eDA69cB03536Fee3c1B31D6C1615b91f4f",
+      "transactionHash": "0x8f78e72c582736dc83f45f898519b285eda37793c703957a5bca9ef6f37779a1"
     },
     "4447": {
       "events": {
@@ -5637,7 +5637,7 @@
     }
   },
   "schemaVersion": "3.0.0",
-  "updatedAt": "2019-01-16T16:02:47.097Z",
+  "updatedAt": "2019-01-18T09:22:36.144Z",
   "devdoc": {
     "methods": {}
   },

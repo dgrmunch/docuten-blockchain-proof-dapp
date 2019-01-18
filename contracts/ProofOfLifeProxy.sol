@@ -70,6 +70,61 @@ contract ProofOfLifeProxy is HasAuditRegistry {
         emit DelegateCallEvent("unlock", success);
     }
 
+    /* @notice Add authorized user
+    * @dev Includes a new user in the authorized users list
+    * @param user - the address you want to authorize
+    */
+    function addAuthorizedUser(address user) public onlyContractOwner {
+      
+        (bool success, bytes memory data)  = delegateCallAddress.delegatecall(abi.encodeWithSignature("addAuthorizedUser(address)", user));
+        
+        if (success) {
+            emit DelegateCallEvent("addAuthorizedUser", success);
+        } else {
+            revert();
+        }
+    }
+    
+    /* @notice Remove credentials
+    * @dev Remove credentials of an authorized user
+    * @param user - the authorized address to be removed
+    */
+    function removeCredentials(address user) public onlyContractOwner {
+        (bool success, bytes memory data)  = delegateCallAddress.delegatecall(abi.encodeWithSignature("removeCredentials(address)", user));
+        
+        if (success) {
+            emit DelegateCallEvent("removeCredentials", success);
+        } else {
+            revert();
+        }
+    }
+    
+    /* @notice Open to every user
+    * @dev Allows every address to certify documents in the contract
+    */
+    function openToEveryUser() public onlyContractOwner {
+        (bool success, bytes memory data)  = delegateCallAddress.delegatecall(abi.encodeWithSignature("openToEveryUser()"));
+        
+        if (success) {
+            emit DelegateCallEvent("openToEveryUser", success);
+        } else {
+            revert();
+        }
+    }
+    
+    /* @notice Close to authorized users
+    * @dev Only allows document certification to authorized users
+    */
+    function closeToAuthorizedUsers() public onlyContractOwner {
+        (bool success, bytes memory data)  = delegateCallAddress.delegatecall(abi.encodeWithSignature("closeToAuthorizedUsers()"));
+        
+        if (success) {
+            emit DelegateCallEvent("closeToAuthorizedUsers", success);
+        } else {
+            revert();
+        }
+    }
+
     /* @notice Certify document creation with hash and timestamp
     * @dev It registers in the blockchain the proof-of-existence of an external document
     * @param _documentHash - Hash of the document (it should have 32 bytes)
@@ -81,7 +136,7 @@ contract ProofOfLifeProxy is HasAuditRegistry {
        
         (bool success, bytes memory data)  = delegateCallAddress.delegatecall(abi.encodeWithSignature("certifyDocumentCreationWithIPFSHash(string,string,string)", _documentHash, _ipfsHash, _timestamp));
         
-        if(success){
+        if (success) {
             emit DelegateCallEvent("certifyDocumentCreationWithIPFSHash", success);
         } else {
             revert();
@@ -99,7 +154,7 @@ contract ProofOfLifeProxy is HasAuditRegistry {
     public {
         (bool success, bytes memory data)  = delegateCallAddress.delegatecall(abi.encodeWithSignature("appendAuditRegistry(uint256,string,string)", _id, _description, _timestamp));
         
-        if(success){
+        if (success) {
             emit DelegateCallEvent("appendAuditRegistry", success);
         } else {
             revert();
