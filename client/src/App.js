@@ -55,7 +55,7 @@ class App extends Component {
   // Function to certify documents on the blockchain with document hash and IFPS hash
   certifyDocument(e) {
     
-    const { accounts, contract, docHash, ipfsHash } = this.state;
+    const {web3, accounts, contract, docHash, ipfsHash } = this.state;
 
     // We display a notification explaining that we are waiting for the transaction to be mined
     this.setState({ 
@@ -67,7 +67,7 @@ class App extends Component {
       details: ''
     });
     
-    contract.methods.certifyDocumentCreationWithIPFSHash(docHash, ipfsHash, this.getTimestamp()).send({ from: accounts[0] }).then(
+    contract.methods.certifyDocumentCreationWithIPFSHash(web3.utils.hexToBytes("0x"+docHash), ipfsHash, this.getTimestamp()).send({ from: accounts[0] }).then(
        result => {
         this.setState({ successfulResponse : "The document with hash '"+docHash+"' has been certified 🤟", 
                         block: result.blockHash,
@@ -88,7 +88,7 @@ class App extends Component {
   // Function allows a document owner to append audit registries to them
   async addRegistryToDocument(e) {
     
-    const { accounts, contract, docHash, registryInfo } = this.state;
+    const {web3, accounts, contract, docHash, registryInfo } = this.state;
     
     // We display a notification explaining that we are waiting for the transaction to be mined
     this.setState({ 
@@ -101,7 +101,7 @@ class App extends Component {
     });
     
     //Retrieve document id from hash
-    const docId = await contract.methods.getId(docHash).call();
+    const docId = await contract.methods.getId(web3.utils.hexToBytes("0x"+docHash)).call();
     
     // Append a new audit registry to the document with the current timestamp and the registry info
     contract.methods.appendAuditRegistry(docId, registryInfo, this.getTimestamp()).send({ from: accounts[0]}).then(
@@ -124,15 +124,15 @@ class App extends Component {
   
   // Function to verify document state on the blockchain (by hash)
   async verifyHash(e){    
-    const { contract, docHash } = this.state;
-    const documentDetail = await contract.methods.getDocumentDetailsByHash(docHash).call();
+    const { web3, contract, docHash } = this.state;
+    const documentDetail = await contract.methods.getDocumentDetailsByHash(web3.utils.hexToBytes("0x"+docHash)).call();
     this.viewDetails(documentDetail);
   }
 
   // Function to display document details and audit registries, directly from the ethereum contract  
   async viewDetails (doc) {
     
-    const { contract } = this.state;
+    const { web3, contract } = this.state;
 
     // If there is not any registry in the smart contract status asocitated with docHash
     // the returned owner will be '0x0000000000000000000000000000000000000000'
@@ -153,7 +153,8 @@ class App extends Component {
     
       // Update state of document details in html view
       this.setState({ shouldHideDetailsSection: false, //show details section
-                      currentDocHash :  doc[1],                     
+                      currentDocHash :  doc[1],              
+                      currentDocHashWithout0x :  doc[1].replace('0x',''),       
                       currentDocOwner :  doc[3],
                       shouldHideSuccessAlert : true,
                       shouldHideWarningAlert : true,
@@ -168,10 +169,10 @@ class App extends Component {
       }   
       
       // Retrieve also audit registries
-      const auditRegistriesNumber = await contract.methods.countAuditRegistriesByDocumentHash(doc[1]).call();
+      const auditRegistriesNumber = await contract.methods.countAuditRegistriesByDocumentHash(web3.utils.hexToBytes(doc[1])).call();
       var registries = [];
       for(var i = 0; i<auditRegistriesNumber; i++){
-        const auditRegistry = await contract.methods.getAuditRegistryByDocumentHash(doc[1], i).call();
+        const auditRegistry = await contract.methods.getAuditRegistryByDocumentHash(web3.utils.hexToBytes(doc[1]), i).call();
         registries[i] = auditRegistry;
       }
     
@@ -199,7 +200,7 @@ class App extends Component {
     
     if(documents.length > 0 && documents[0][1] !== ''){   
       //Display list of documents (clicking on each button will display the details of each doc)   
-      this.setState({ myDocuments:  documents.map((doc, i) =><tr key={i}><td><button className="btn btn-outline-secondary btn-sm"  onClick={() => {this.viewDetails(doc)}} type="submit">{doc[1]}</button> </td></tr>)});
+      this.setState({ myDocuments:  documents.map((doc, i) =><tr key={i}><td><button className="btn btn-outline-secondary btn-sm"  onClick={() => {this.viewDetails(doc)}} type="submit">{doc[1].replace('0x','').substring(0,29)+'...'}</button> </td></tr>)});
     }
 
     this.setState({ shouldHideWarningAlert : true, shouldHideErrorAlert: true });
@@ -421,7 +422,7 @@ class App extends Component {
                             <br/>
                             <div className={this.state.shouldHideDetailsSection ? 'hidden' : ''}>
                               <div className="jumbotron">
-                                <h3 className="display-5"><FontAwesomeIcon icon="stamp" /> {this.state.currentDocHash}</h3>
+                                <h3 className="display-5"><FontAwesomeIcon icon="stamp" /> {this.state.currentDocHashWithout0x}</h3>
                                 <h4><span className="badge badge-success"><FontAwesomeIcon icon="certificate" /> Certified Document</span></h4>
                                 <br/><span className="badge badge-light">Owned by {this.state.currentDocOwner}</span>
                                 <p className="lead"><span dangerouslySetInnerHTML={{__html: this.state.currentDocIpfsLink}}/></p>
