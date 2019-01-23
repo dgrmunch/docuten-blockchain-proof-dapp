@@ -58,9 +58,6 @@ or
 
 This will deploy the smart contracts.
 
-* Remember that in order to open the use of your deployed instance to other users (and not only the contract owner who deployed the contract) you should call to the openToEveryUser() function in the proxy. This will make all the functions with the modifier onlyAuthorizedUsers (in the delegated contract, ProofOfLife, or its parent contracts) to be enabled to "other users" and not only to the authorized ones.
-
-
 ### On another shell
 
 
@@ -96,7 +93,7 @@ Update the configuration in truffle-config.js in order to adapt it to your needs
 
 ```
 const fs = require('fs');
-const contract = JSON.parse(fs.readFileSync('client/src/contracts/ProofOfLife.json', 'utf8'));
+const contract = JSON.parse(fs.readFileSync('client/src/contracts/ProofOfLifeProxy.json', 'utf8'));
 console.log(JSON.stringify(contract.abi));
 
 ```
