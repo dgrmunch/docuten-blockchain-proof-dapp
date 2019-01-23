@@ -1,0 +1,283 @@
+{
+  "contractName": "HasAuditRegistry",
+  "abi": [],
+  "bytecode": "0x6080604052348015600f57600080fd5b50603580601d6000396000f3fe6080604052600080fdfea165627a7a7230582064e34891e1a57950ea7d7c36663c56d28b59e93a7743acb157057e6f572aac130029",
+  "deployedBytecode": "0x6080604052600080fdfea165627a7a7230582064e34891e1a57950ea7d7c36663c56d28b59e93a7743acb157057e6f572aac130029",
+  "sourceMap": "56:157:1:-;;;;8:9:-1;5:2;;;30:1;27;20:12;5:2;56:157:1;;;;;;;",
+  "deployedSourceMap": "56:157:1:-;;;;;",
+  "source": "pragma solidity ^0.5.0;\n\n\n/* @title HasAuditRegistry */\ncontract HasAuditRegistry {\n  \n    struct AuditRegistry {      \n        string description;\n        string timestamp;\n        uint blockTimestamp;\n    }\n  \n}",
+  "sourcePath": "/Users/xmunch/Desktop/Projects/Ethereum Projects/docuten-blockchain-proof/contracts/HasAuditRegistry.sol",
+  "ast": {
+    "absolutePath": "/Users/xmunch/Desktop/Projects/Ethereum Projects/docuten-blockchain-proof/contracts/HasAuditRegistry.sol",
+    "exportedSymbols": {
+      "HasAuditRegistry": [
+        154
+      ]
+    },
+    "id": 155,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 146,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:1"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 154,
+        "linearizedBaseContracts": [
+          154
+        ],
+        "name": "HasAuditRegistry",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "HasAuditRegistry.AuditRegistry",
+            "id": 153,
+            "members": [
+              {
+                "constant": false,
+                "id": 148,
+                "name": "description",
+                "nodeType": "VariableDeclaration",
+                "scope": 153,
+                "src": "128:18:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 147,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "128:6:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 150,
+                "name": "timestamp",
+                "nodeType": "VariableDeclaration",
+                "scope": 153,
+                "src": "156:16:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 149,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "156:6:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 152,
+                "name": "blockTimestamp",
+                "nodeType": "VariableDeclaration",
+                "scope": 153,
+                "src": "182:19:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 151,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "182:4:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "AuditRegistry",
+            "nodeType": "StructDefinition",
+            "scope": 154,
+            "src": "91:117:1",
+            "visibility": "public"
+          }
+        ],
+        "scope": 155,
+        "src": "56:157:1"
+      }
+    ],
+    "src": "0:213:1"
+  },
+  "legacyAST": {
+    "absolutePath": "/Users/xmunch/Desktop/Projects/Ethereum Projects/docuten-blockchain-proof/contracts/HasAuditRegistry.sol",
+    "exportedSymbols": {
+      "HasAuditRegistry": [
+        154
+      ]
+    },
+    "id": 155,
+    "nodeType": "SourceUnit",
+    "nodes": [
+      {
+        "id": 146,
+        "literals": [
+          "solidity",
+          "^",
+          "0.5",
+          ".0"
+        ],
+        "nodeType": "PragmaDirective",
+        "src": "0:23:1"
+      },
+      {
+        "baseContracts": [],
+        "contractDependencies": [],
+        "contractKind": "contract",
+        "documentation": null,
+        "fullyImplemented": true,
+        "id": 154,
+        "linearizedBaseContracts": [
+          154
+        ],
+        "name": "HasAuditRegistry",
+        "nodeType": "ContractDefinition",
+        "nodes": [
+          {
+            "canonicalName": "HasAuditRegistry.AuditRegistry",
+            "id": 153,
+            "members": [
+              {
+                "constant": false,
+                "id": 148,
+                "name": "description",
+                "nodeType": "VariableDeclaration",
+                "scope": 153,
+                "src": "128:18:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 147,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "128:6:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 150,
+                "name": "timestamp",
+                "nodeType": "VariableDeclaration",
+                "scope": 153,
+                "src": "156:16:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_string_storage_ptr",
+                  "typeString": "string"
+                },
+                "typeName": {
+                  "id": 149,
+                  "name": "string",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "156:6:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_string_storage_ptr",
+                    "typeString": "string"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              },
+              {
+                "constant": false,
+                "id": 152,
+                "name": "blockTimestamp",
+                "nodeType": "VariableDeclaration",
+                "scope": 153,
+                "src": "182:19:1",
+                "stateVariable": false,
+                "storageLocation": "default",
+                "typeDescriptions": {
+                  "typeIdentifier": "t_uint256",
+                  "typeString": "uint256"
+                },
+                "typeName": {
+                  "id": 151,
+                  "name": "uint",
+                  "nodeType": "ElementaryTypeName",
+                  "src": "182:4:1",
+                  "typeDescriptions": {
+                    "typeIdentifier": "t_uint256",
+                    "typeString": "uint256"
+                  }
+                },
+                "value": null,
+                "visibility": "internal"
+              }
+            ],
+            "name": "AuditRegistry",
+            "nodeType": "StructDefinition",
+            "scope": 154,
+            "src": "91:117:1",
+            "visibility": "public"
+          }
+        ],
+        "scope": 155,
+        "src": "56:157:1"
+      }
+    ],
+    "src": "0:213:1"
+  },
+  "compiler": {
+    "name": "solc",
+    "version": "0.5.0+commit.1d4f565a.Emscripten.clang"
+  },
+  "networks": {},
+  "schemaVersion": "3.0.0",
+  "updatedAt": "2019-01-22T13:17:44.200Z",
+  "devdoc": {
+    "methods": {}
+  },
+  "userdoc": {
+    "methods": {}
+  }
+}
