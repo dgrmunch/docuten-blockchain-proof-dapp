@@ -13,17 +13,18 @@ module.exports = {
       port: 9545,
       network_id: "*" // Match any network id
     },
+    alastria: {
+      host: "5.57.225.79",
+      port: 22000,
+      network_id: "82584648528", // Match Alastria network id
+      gas: 6721975,
+      gasPrice: 0
+    },
     ropsten: {
       provider: function() {
         return new HDWalletProvider(mnemonic, "https://ropsten.infura.io/<INFURA_Access_Token>")
       },
       network_id: 3
-    }, 
-    alastria: {
-      host: "bchain01.enxendra.com",
-      port: 22000,
-      gasPrice: 0,
-      network_id: "*" //1140
-    },
+    }
   }
 };
