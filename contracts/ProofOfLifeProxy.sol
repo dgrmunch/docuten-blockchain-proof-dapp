@@ -15,7 +15,7 @@ contract ProofOfLifeProxy is HasAuditRegistry {
     mapping(bytes32  => uint256) public idByDocumentHash;
     mapping(uint256  => address) public ownerByDocumentId;
     mapping(uint256  => string) public ipfsHashByDocumentId;
-    mapping(uint256  => string) public hashByDocumentId;
+    mapping(uint256  => bytes32) public hashByDocumentId;
     mapping(address  => uint256[]) public documentsByOwnerAddress;
     mapping(uint256 => AuditRegistry[]) public auditRegistryByDocumentId;
     
@@ -131,10 +131,10 @@ contract ProofOfLifeProxy is HasAuditRegistry {
     * @param _ipfsHash - IPFS Hash, if it exists 
     * @return id - returns certified document id
     */
-    function certifyDocumentCreationWithIPFSHash(string memory _documentHash, string memory _ipfsHash,
+    function certifyDocumentCreationWithIPFSHash(bytes32 _documentHash, string memory _ipfsHash,
     string memory _timestamp) public {
        
-        (bool success, bytes memory data)  = delegateCallAddress.delegatecall(abi.encodeWithSignature("certifyDocumentCreationWithIPFSHash(string,string,string)", _documentHash, _ipfsHash, _timestamp));
+        (bool success, bytes memory data)  = delegateCallAddress.delegatecall(abi.encodeWithSignature("certifyDocumentCreationWithIPFSHash(bytes32,string,string)", _documentHash, _ipfsHash, _timestamp));
         
         if (success) {
             emit DelegateCallEvent("certifyDocumentCreationWithIPFSHash", success);
@@ -177,11 +177,11 @@ contract ProofOfLifeProxy is HasAuditRegistry {
     * @param _documentHash - Hash of the document
     * @return uint256 id, string docHash, string ipfsHash, address documentOwner
     */
-    function getDocumentDetailsByHash(string memory _documentHash) public view
-    returns (uint256, string memory, string memory, address) {
+    function getDocumentDetailsByHash(bytes32 _documentHash) public view
+    returns (uint256, bytes32, string memory, address) {
 
         uint256 _id = getId(_documentHash);
-        return (_id, _documentHash, ipfsHashByDocumentId[_id], ownerByDocumentId[_id]);
+        return (_id, hashByDocumentId[_id], ipfsHashByDocumentId[_id], ownerByDocumentId[_id]);
     }
     
     /* @notice Get auditRegistry by documentHash
@@ -190,7 +190,7 @@ contract ProofOfLifeProxy is HasAuditRegistry {
     * @param _index - Position of the auditRegistry in the list
     * @return string description, string timestamp, uint256 blockTimestamp
     */
-    function getAuditRegistryByDocumentHash(string memory _documentHash, uint256 _index) public view
+    function getAuditRegistryByDocumentHash(bytes32 _documentHash, uint256 _index) public view
     returns (string memory, string memory, uint256) {
         uint256 _id = getId(_documentHash);
         return getAuditRegistryByDocumentId(_id, _index);
@@ -201,7 +201,7 @@ contract ProofOfLifeProxy is HasAuditRegistry {
     * @param _documentHash - Hash of the document
     * @return uint256 number of elements
     */
-    function countAuditRegistriesByDocumentHash(string memory _documentHash) public view returns(uint256) {
+    function countAuditRegistriesByDocumentHash(bytes32 _documentHash) public view returns(uint256) {
         uint256 _id = getId(_documentHash);
         return auditRegistryByDocumentId[_id].length;
     }
@@ -212,7 +212,7 @@ contract ProofOfLifeProxy is HasAuditRegistry {
     * @return uint256 id, string docHash, address documentOwner
     */
     function getDocumentDetailsById(uint256 _id) public view
-    returns (uint256, string memory, string memory, address) {
+    returns (uint256, bytes32, string memory, address) {
         return (_id, hashByDocumentId[_id], ipfsHashByDocumentId[_id], ownerByDocumentId[_id]);
     }
          
@@ -233,31 +233,8 @@ contract ProofOfLifeProxy is HasAuditRegistry {
     * @param _documentHash - Hash of the document
     * @return uint256
     */
-    function getId(string memory _documentHash) public view 
+    function getId(bytes32 _documentHash) public view 
     returns(uint256) { 
-              
-        bytes32 _docHash = stringToBytes32(_documentHash);
-        return idByDocumentHash[_docHash];
+        return idByDocumentHash[_documentHash];
     }
-      
-    
-    //  ------ Aux Functions  ------ 
-        
-    /* @notice StringToBytes32 (based on Grzegorz Kapkowski's method)
-    * @ref https://ethereum.stackexchange.com/questions/9142/how-to-convert-a-string-to-bytes32
-    * @dev Transforms a string in bytes32
-    * @param _documentHash - Hash of the document
-    * @return bytes32
-    */
-    function stringToBytes32(string memory _stringInput) public pure returns (bytes32 result) {
-        bytes memory tempEmptyStringTest = bytes(_stringInput);
-        if (tempEmptyStringTest.length == 0) {
-            return 0x0;
-        }
-    
-        assembly {
-            result := mload(add(_stringInput, 32))
-        }
-    }
-      
 }

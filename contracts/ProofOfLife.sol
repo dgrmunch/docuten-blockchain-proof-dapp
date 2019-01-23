@@ -26,7 +26,7 @@ contract ProofOfLife  is ProofOfExistence, HasAuditRegistry {
     * @param _documentHash - Hash of the document (it should have 32 bytes)
     * @return id - returns certified document id
     */
-    function certifyDocumentCreation(string memory _documentHash, string memory _timestamp) 
+    function certifyDocumentCreation(bytes32 _documentHash, string memory _timestamp) 
     public onlyAuthorizedUsers onlyWhenUnlocked returns(uint256) {
         return certifyDocumentCreation(_documentHash, "", _timestamp);
     }
@@ -37,7 +37,7 @@ contract ProofOfLife  is ProofOfExistence, HasAuditRegistry {
     * @param _ipfsHash - IPFS Hash, if it exists 
     * @return id - returns certified document id
     */
-    function certifyDocumentCreationWithIPFSHash(string memory _documentHash, string memory _ipfsHash,
+    function certifyDocumentCreationWithIPFSHash(bytes32 _documentHash, string memory _ipfsHash,
     string memory _timestamp) public onlyAuthorizedUsers onlyWhenUnlocked returns(uint256) {
         return certifyDocumentCreation(_documentHash, _ipfsHash, _timestamp);
     }
@@ -48,7 +48,7 @@ contract ProofOfLife  is ProofOfExistence, HasAuditRegistry {
     * @param _ipfsHash - IPFS Hash, if it exists 
     * @return _id - returns certified document id
     */
-    function certifyDocumentCreation(string memory _documentHash, string memory _ipfsHash,
+    function certifyDocumentCreation(bytes32 _documentHash, string memory _ipfsHash,
     string memory _timestamp) public onlyAuthorizedUsers onlyWhenUnlocked returns(uint256) {
         
         uint256 _id = certifyDocument(_documentHash, _ipfsHash);
