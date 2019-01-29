@@ -16,7 +16,7 @@ module.exports = {
     alastria: {
       host: "5.57.225.79",
       port: 22000,
-      network_id: "82584648528", // Match Alastria network id
+      network_id: "*", // Match Alastria network id
       gas: 6721975,
       gasPrice: 0
     },
